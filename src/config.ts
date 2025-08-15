@@ -1,17 +1,27 @@
 export const siteConfig = {
-  name: "Ryan Fitzgerald",
-  title: "Senior Software Engineer",
-  description: "Portfolio website of Ryan Fitzgerald",
-  accentColor: "#1d4ed8",
+  name: "Isaac Haire",
+  title: "Data Engineer",
+  description: "Portfolio website of Isaac Haire",
+  accentColor: "#4285F4cd ",
   social: {
-    email: "your-email@example.com",
-    linkedin: "https://linkedin.com/in/yourprofile",
-    twitter: "https://x.com/rfitzio",
-    github: "https://github.com/RyanFitzgerald",
+    email: "isaachaire@protonmail.com",
+    linkedin: "www.linkedin.com/in/isaac-haire",
+    github: "https://github.com/IsaacOnKeys",
   },
   aboutMe:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos asperiores nihil consequatur tempore cupiditate architecto natus commodi corrupti quas quasi facere est, dignissimos odit nam veniam sapiente ut, vitae eligendi ipsum dolor, nostrum ullam impedit! Corrupti ratione mollitia temporibus necessitatibus, consectetur reiciendis recusandae id, dolorum quaerat, vero pariatur. Ratione!",
-  skills: ["Javascript", "React", "Node.js", "Python", "AWS", "Docker"],
+    "I’m a GCP-certified data engineer and IBM-certified in DevOps & Software Engineering. I bring a creator’s mindset from co-founding a two-person card-game publisher—owning web dev, ops, and design while launching on Amazon—and the discipline of a classically trained pianist: precision, iteration, and performance under pressure.",
+  skills: [
+    "Python",
+    "SQL",
+    "javascript",
+    "Bash",
+    "Apache Beam",
+    "GCP",
+    "ETL/ELT",
+    "Streaming Data",
+    "Data Modeling",
+    "Tableau",
+  ],
   projects: [
     {
       name: "AI Dev Roundup Newsletter",
@@ -69,9 +79,9 @@ export const siteConfig = {
   ],
   education: [
     {
-      school: "University Name",
-      degree: "Bachelor of Science in Computer Science",
-      dateRange: "2014 - 2018",
+      school: "Cornish College of the Arts",
+      degree: "Bachelor of Music",
+      dateRange: "2006",
       achievements: [
         "Graduated Magna Cum Laude with 3.8 GPA",
         "Dean's List all semesters",
@@ -79,7 +89,7 @@ export const siteConfig = {
       ],
     },
     {
-      school: "Online Platform",
+      school: "Data Camp",
       degree: "Full Stack Development Certificate",
       dateRange: "2019",
       achievements: [
