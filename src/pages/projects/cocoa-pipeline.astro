@@ -1,0 +1,149 @@
+---
+import { siteConfig } from "../../config";
+import "../../styles/cocoa-project.css"; // page-only styles
+
+const title = "Cocoa Prices Streaming & Forecasting (GCP)";
+const description =
+  "End-to-end data engineering pipeline on Google Cloud: data ingested daily from APIs and web scraping into Pub/Sub (Avro) via Cloud Functions; raw feeds cleaned/validated/transformed with Dataflow (Apache Beam) into BigQuery staging; cost-efficient orchestration on a self-managed Airflow VM; feature engineering in BigQuery stored procedures; forecasting with BigQuery ML; KPI analytics in Looker Studio.";
+---
+
+<head>
+  <title>{title}</title>
+  <!-- Load Roboto only for this page -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<section id="cocoa-pipeline" class="project-cocoa p-8 sm:p-12 md:p-16 lg:p-24">
+  <header class="mb-8">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">{title}</h1>
+    <div
+      class="w-[75px] h-[5px] mt-3 rounded-full"
+      style={`background-color: ${siteConfig.accentColor}`}
+    />
+    <p class="mt-4 text-gray-600 max-w-3xl">{description}</p>
+  </header>
+
+  <div class="space-y-12 max-w-4xl">
+
+    <!-- 1) Live Dashboard (Looker) -->
+    <section>
+      <h2 class="text-2xl font-semibold text-gray-900">Live Dashboard</h2>
+      <p class="mt-2 text-gray-600">Daily cocoa prices with a short forecast; try the date controls.</p>
+      <div class="mt-4 rounded-xl overflow-hidden shadow-sm border border-gray-100">
+        <!-- Page A -->
+        <iframe
+          width="1200"
+          height="900"
+          src="https://lookerstudio.google.com/embed/reporting/REPORT_ID/page/PAGE_ID_A"
+          frameborder="0"
+          style="border:0;"
+          allowfullscreen>
+        </iframe>
+
+        <!-- Page B (stacked below A) -->
+        <iframe
+          width="1200"
+          height="900"
+          src="https://lookerstudio.google.com/embed/reporting/REPORT_ID/page/PAGE_ID_B"
+          frameborder="0"
+          style="border:0; margin-top:24px;"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="mt-2 text-sm text-gray-500">Refresh: daily. Sources: cocoa, oil, weather.</p>
+    </section>
+  </div>
+    <!-- 1.5) Architecture Diagram (full-bleed) -->
+    <section id="architecture" class="full-bleed arch-wrap">
+      <h2 class="sr-only">Architecture Diagram</h2>
+      <img
+        src="/images/architectual_diagram.svg"
+        alt="Architecture: sources → Cloud Functions → Pub/Sub (Avro, DLQs) → Beam → BigQuery (staging → curated/features) → BQML → Looker; VM boundary encloses Airflow (scheduler/webserver/Postgres) and Beam."
+        loading="lazy"
+        decoding="async"
+        class="arch-img"
+      />
+    </section>
+
+    <!-- 2) Data Model (ERD) -->
+    <section>
+      <h2 class="text-2xl font-semibold text-gray-900">Data Model (ERD)</h2>
+      <p class="mt-2 text-gray-600">High-level flow: sources → staging → features → forecast.</p>
+      <figure class="mt-4 rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-white">
+        <img src="/images/cocoa-erd.svg" alt="ERD showing sources → staging → features → forecast" class="w-full">
+      </figure>
+    </section>
+
+    <!-- 3) Project Snapshot -->
+    <section>
+      <h2 class="text-2xl font-semibold text-gray-900">Project Snapshot</h2>
+      <ul class="mt-4 space-y-2 text-gray-800">
+        <li><strong>Goal:</strong> Track cocoa prices + drivers and forecast short-term movement to support simple daily decisions.</li>
+        <li><strong>My role:</strong> End-to-end build (ingestion → storage → modeling → dashboard).</li>
+        <li><strong>Impact:</strong> Forecast error MAPE [x%] over last [n] days; data fresh daily by [HH:MM].</li>
+        <li><strong>Scale:</strong> ~[N] rows/day across [M] tables; 3 data sources (cocoa, oil, weather).</li>
+        <li><strong>Reliability:</strong> Auto-retries + dead-letter topics; backfill in [N] clicks; uptime ~[x]%</li>
+        <li><strong>Cost:</strong> ~€[x]/month (VM + BigQuery + egress = low, tuned for hobby budget).</li>
+        <li><strong>Security:</strong> Least-privilege IAM, secrets in Secret Manager, EU data residency.</li>
+        <li><strong>Design choices:</strong> VM Airflow over Cloud Composer (cost), BigQuery ML for fast iteration, Pub/Sub + Avro for schema discipline.</li>
+        <li><strong>Next steps:</strong> CI/CD hardening, data catalog, simple anomaly alerts.</li>
+      </ul>
+    </section>
+
+    <!-- 4) Nice-to-haves -->
+    <section>
+      <h2 class="text-2xl font-semibold text-gray-900">Nice-to-haves</h2>
+      <ul class="mt-4 list-disc pl-6 text-gray-800">
+        <li>Alert me if the price jumps or if data stops arriving.</li>
+        <li>A tiny “quality bar” on the dashboard (latest MAPE + last refresh time).</li>
+        <li>“What changed today?” summary (new rows + notable movements).</li>
+        <li>One-click backfill from a date range, with an audit log entry.</li>
+        <li>Shareable links with preset filters (e.g., last 90 days).</li>
+      </ul>
+    </section>
+
+    <p class="pt-4">
+      <a href="/" class="text-blue-600 hover:underline">&larr; Back to home</a>
+    </p>
+  
+
+  <!-- (Optional) keep or remove these extra sections; they duplicate the Snapshot bullets above -->
+  <section>
+    <h2 class="text-2xl font-semibold text-gray-900">Data Sources & Ingestion</h2>
+    <ul class="list-disc pl-6 mt-3 text-gray-800">
+      <li>APIs + web scraping (cocoa, oil, weather) via Cloud Functions (Gen2)</li>
+      <li>Pub/Sub topics with enforced Avro schemas; dead-letter topics</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="text-2xl font-semibold text-gray-900">Streaming & Storage</h2>
+    <ul class="list-disc pl-6 mt-3 text-gray-800">
+      <li>Dataflow (Apache Beam) for cleaning, validation, sentinel handling, forward-fill</li>
+      <li>BigQuery staging tables with raw payloads + ingestion timestamps</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="text-2xl font-semibold text-gray-900">Orchestration</h2>
+    <ul class="list-disc pl-6 mt-3 text-gray-800">
+      <li>Airflow on GCE VM (Docker Compose); cost-aware scheduling</li>
+      <li>IAM, Secret Manager (Fernet/API keys), Cloud Logging</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="text-2xl font-semibold text-gray-900">Features, Modeling & Analytics</h2>
+    <ul class="list-disc pl-6 mt-3 text-gray-800">
+      <li>Feature build in BigQuery SQL stored procedures/views</li>
+      <li>Forecasting with BigQuery ML; evaluation (MAPE)</li>
+      <li>Looker Studio dashboard for KPIs/visualization</li>
+    </ul>
+  </section>
+
+  <p class="pt-4">
+    <a href="/" class="text-blue-600 hover:underline">&larr; Back to home</a>
+  </p>
+</section>
