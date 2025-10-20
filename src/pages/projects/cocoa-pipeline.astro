@@ -2,7 +2,7 @@
 import { siteConfig } from "../../config";
 import "../../styles/cocoa-project.css"; // page-only styles
 
-const title = "Cocoa Prices Streaming & Forecasting (GCP)";
+const title = "Swiss Cocoa Prices: 40-Day Forecasts & Trends";
 const description =
   "End-to-end data engineering pipeline on Google Cloud: data ingested daily from APIs and web scraping into Pub/Sub (Avro) via Cloud Functions; raw feeds cleaned/validated/transformed with Dataflow (Apache Beam) into BigQuery staging; cost-efficient orchestration on a self-managed Airflow VM; feature engineering in BigQuery stored procedures; forecasting with BigQuery ML; KPI analytics in Looker Studio.";
 ---
@@ -32,32 +32,33 @@ const description =
       <h2 class="text-2xl font-semibold text-gray-900">Live Dashboard</h2>
       <p class="mt-2 text-gray-600">Daily cocoa prices with a short forecast; try the date controls.</p>
       <div class="mt-4 rounded-xl overflow-hidden shadow-sm border border-gray-100">
-        <!-- Page A -->
-        <iframe
-          width="1200"
-          height="900"
-          src="https://lookerstudio.google.com/embed/reporting/REPORT_ID/page/PAGE_ID_A"
-          frameborder="0"
-          style="border:0;"
-          allowfullscreen>
-        </iframe>
-
-        <!-- Page B (stacked below A) -->
-        <iframe
-          width="1200"
-          height="900"
-          src="https://lookerstudio.google.com/embed/reporting/REPORT_ID/page/PAGE_ID_B"
-          frameborder="0"
-          style="border:0; margin-top:24px;"
-          allowfullscreen>
-        </iframe>
+      <!-- Cocoa Dashboard — Page 1 -->
+      <iframe
+        title="Cocoa Dashboard — Page 1"
+        src="https://lookerstudio.google.com/embed/reporting/0458444b-cbb3-4adf-afad-6e9b2ebb93ff/page/BGEqE"
+        width="1200"
+        height="390"
+        frameborder="0"
+        style="border:0; display:block; margin:0 auto;"
+        allowfullscreen>
+      </iframe>
+      <!-- Cocoa Dashboard — Page 2 -->
+      <iframe
+        title="Cocoa Dashboard — Page 2"
+        src="https://lookerstudio.google.com/embed/reporting/0458444b-cbb3-4adf-afad-6e9b2ebb93ff/page/p_m0h69dttwd"
+        width="1200"
+        height="1320"
+        frameborder="0"
+        style="border:0; display:block; margin:24px auto 0;"
+        allowfullscreen>
+      </iframe>
       </div>
       <p class="mt-2 text-sm text-gray-500">Refresh: daily. Sources: cocoa, oil, weather.</p>
     </section>
   </div>
     <!-- 1.5) Architecture Diagram (full-bleed) -->
     <section id="architecture" class="full-bleed arch-wrap">
-      <h2 class="sr-only">Architecture Diagram</h2>
+      <h2 class="sr-only">Event-Driven Architecture for Cocoa Price Forecasting (GCP)</h2>
       <img
         src="/images/architectual_diagram.svg"
         alt="Architecture: sources → Cloud Functions → Pub/Sub (Avro, DLQs) → Beam → BigQuery (staging → curated/features) → BQML → Looker; VM boundary encloses Airflow (scheduler/webserver/Postgres) and Beam."
