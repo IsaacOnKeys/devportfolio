@@ -1,6 +1,7 @@
 ---
 import { siteConfig } from "../../config";
-import "../../styles/cocoa-project.css"; // page-only styles
+
+import "../../styles/cocoa-project.css"; 
 
 ---
 
@@ -12,25 +13,34 @@ import "../../styles/cocoa-project.css"; // page-only styles
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="project-page">
 
-<section id="cocoa-pipeline" class="project-cocoa p-8 sm:p-12 md:p-16 lg:p-24">
+<section id="cocoa-pipeline" class="project-cocoa p-8 sm:p-12 md:p-16 lg:p-24">  <nav id="navigation">
+  <ul id="nav-list">
+    <li><a href="#dashboard">Analytics</a></li>
+    <li><a href="#architecture">System Architecture</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="/">Home</a></li>
+  </ul>
+
+</nav>
   <header class="mb-8 cocoa-h1-bg">
     
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 flex items-center gap-3">
+      <h1>
         Swiss Cocoa Price Forecast
       </h1>    
     
     <h2 class="subtitle">Live, ML-driven analytics for market trends.</h2>
+      <!-- NAvigation -->
 
   </header>
-  <main>
 
+  <main>
     <!-- 1) Live Dashboard (Looker) -->
   <div id="dashboard" class="space-y-12">
     <section class="w-[1200px] mx-auto">
       <h2 class="font-semibold">Live Dashboard</h2>
-      <div class="dashboards">
+      <div class="dashboard">
         <!-- Cocoa Dashboard — Page 1 -->
         <iframe
           title="Cocoa Dashboard — Page 1"
@@ -43,7 +53,7 @@ import "../../styles/cocoa-project.css"; // page-only styles
         </iframe>
         <!-- Cocoa Dashboard — Page 2 -->
       </div>
-      <div class="dashboards">
+      <div class="dashboard">
         <iframe
           title="Cocoa Dashboard — Page 2"
           src="https://lookerstudio.google.com/embed/reporting/0458444b-cbb3-4adf-afad-6e9b2ebb93ff/page/p_m0h69dttwd"
@@ -73,10 +83,16 @@ import "../../styles/cocoa-project.css"; // page-only styles
   <section id="about">
     <h3 class="text-2xl font-semibold text-gray-900">Scope &amp; Limitations</h3>
     <ul class="mt-4 space-y-2 text-gray-800">
-      <li><strong>My role:</strong> End-to-end (ingest &rarr; model &rarr; viz).</li>
-      <li><strong>POC scope:</strong> Production-style architecture with a lean feature set.</li>
+      <li><strong>Goal:</strong> Track cocoa prices & drivers for the cocoa market in Switzerland; forecast short-term moves for the next 40 days</li>
+      <li><strong>Impact:</strong> Forecast MAPE ~8.7% over 40 days; alerts ready.</li>
+      <li><strong>My role:</strong> End-to-end (ingest &rarr; transform &rarr; model &rarr; viz).</li>
+      <li><strong>Freshness:</strong> Data updates daily by 12:00 CET/CEST.</li>
+      <li><strong>Scale:</strong> ~12,000 rows/day across  tables; 3 sources.</li>
+      <li><strong>Reliability:</strong> DL topics + retries; uptime 100%.</li>
+      <li><strong>Cost:</strong> ~€30/mo (VM + BQ).</li>
+      <li><strong>Scope:</strong> Production-style architecture with a lean feature set.</li>
       <li><strong>Accuracy:</strong> See the dashboard tile for current MAPE; expected to improve with added features/tuning.</li>
-      <li><strong>Not yet modeled:</strong> FX, supply/demand shocks, futures curve, holiday/seasonal effects.</li>
+      <li><strong>Not yet modeled:</strong> FX, supply/demand shocks,  holiday/seasonal effects.</li>
     </ul>
   </section>
 
@@ -84,10 +100,11 @@ import "../../styles/cocoa-project.css"; // page-only styles
   <section>
     <h3 class="text-2xl font-semibold text-gray-900">Design Rationale</h3>
     <ul class="mt-4 space-y-2 text-gray-800">
-      <li><strong>Cost &amp; control:</strong> Self-managed Airflow VM over Composer.</li>
+      <li><strong>Cost &amp; control:</strong> Self-managed Airflow VM over Composer; Self-managed BEAM streaming on VM over Dataflow; Budget alerts.</li>
       <li><strong>Iteration speed:</strong> BigQuery ML for in-SQL training/evaluation.</li>
-      <li><strong>Contracts:</strong> Pub/Sub + Avro for strict schemas and DLQs.</li>
-      <li><strong>Security &amp; residency:</strong> Least-privilege IAM, secrets in Secret Manager, EU data residency.</li>
+      <li><strong>Contracts:</strong> Avro schemas enforced in Pub/Sub, during Beam (fastavro) decode, and on BigQuery writes; DLQs catch rejects.</li>
+      <li><strong>Data integrity:</strong> Validations at source ingest and in Beam (null handling, type/range checks); rejects to DLQs.</li>
+      <li><strong>Security &amp; residency:</strong> Least-privilege IAM, secrets in Secret Manager, EU data residency, scanned for exposed API keys with GitGuardian.</li>
     </ul>
   </section>
 
@@ -95,7 +112,7 @@ import "../../styles/cocoa-project.css"; // page-only styles
   <section>
     <h3 class="text-2xl font-semibold text-gray-900">Next</h3>
     <ul class="mt-4 list-disc pl-6 text-gray-800">
-      <li>CI/CD hardening and simple anomaly alerts.</li>
+      <li>CI/CD hardening.</li>
       <li>Feature expansion (FX, calendar effects, supply signals).</li>
       <li>Lightweight runbook and data catalog.</li>
     </ul>
@@ -106,14 +123,26 @@ import "../../styles/cocoa-project.css"; // page-only styles
     <h3 class="text-2xl font-semibold text-gray-900">Nice-to-haves</h3>
     <ul class="mt-4 list-disc pl-6 text-gray-800">
       <li>“What changed today?” summary.</li>
+      <li>More up-to date sources with paid API subscriptions</li>
       <li>One-click backfill with audit note.</li>
       <li>Shareable links with preset filters.</li>
     </ul>
   </section>
+  <!-- Git Hub -->
+  <section>
+    <h3 class="text-2xl font-semibold text-gray-900">Code Repository</h3>
+    <ul class="mt-4 list-disc pl-6 text-gray-800">
+      <li> https://github.com/IsaacOnKeys/Cocoa_Prices.git</li>
+    </ul>
 
-  <p class="pt-4">
-    <a href="/" class="text-blue-600 hover:underline">&larr; Back to home</a>
-  </p>
+  </section>
+
+
 </section>
+<p class="to-top" >
+  <a href="#cocoa-pipeline" ><span class="to-top-arrow">&uarr;</span> Back to top</a>
+</p>
+
+
 </main>
 </body>
