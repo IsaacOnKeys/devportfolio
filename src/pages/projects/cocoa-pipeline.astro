@@ -18,38 +18,36 @@ import "../../styles/cocoa-project.css"; // page-only styles
   <header class="mb-8 cocoa-h1-bg">
     
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 flex items-center gap-3">
-        Cocoa Prices in Switzerland — Forecasts & Drivers
+        Swiss Cocoa Price Forecast
       </h1>    
     
-    <div
-      class="w-[75px] h-[5px] mt-3 rounded-full"
-      style={`background-color: ${siteConfig.accentColor}`}
-    />
-    <p class="mt-4 text-gray-600 max-w-3xl sub-title">Proof-of-concept. Stacked live dashboards plus the system architecture.</p>
+    <h2 class="subtitle">Live, ML-driven analytics for market trends.</h2>
 
   </header>
   <main>
 
     <!-- 1) Live Dashboard (Looker) -->
-  <div class="space-y-12">
+  <div id="dashboard" class="space-y-12">
     <section class="w-[1200px] mx-auto">
       <h2 class="font-semibold">Live Dashboard</h2>
-      <div class="mt-4 rounded-xl overflow-hidden shadow-sm border border-gray-100">
+      <div class="dashboards">
         <!-- Cocoa Dashboard — Page 1 -->
         <iframe
           title="Cocoa Dashboard — Page 1"
           src="https://lookerstudio.google.com/embed/reporting/0458444b-cbb3-4adf-afad-6e9b2ebb93ff/page/BGEqE"
-          width="1200"
+          width="1198"
           height="390"
           frameborder="0"
           style="border:0; display:block; margin:0 auto;"
           allowfullscreen>
         </iframe>
         <!-- Cocoa Dashboard — Page 2 -->
+      </div>
+      <div class="dashboards">
         <iframe
           title="Cocoa Dashboard — Page 2"
           src="https://lookerstudio.google.com/embed/reporting/0458444b-cbb3-4adf-afad-6e9b2ebb93ff/page/p_m0h69dttwd"
-          width="1200"
+          width="1198"
           height="1320"
           frameborder="0"
           style="border:0; display:block; margin:24px auto 0;"
@@ -60,7 +58,7 @@ import "../../styles/cocoa-project.css"; // page-only styles
   </div>
 
   <!-- 1.5) Architecture Diagram (full-bleed) -->
-  <h2 class="sr-only diagram-h2">Event-Driven Architecture for Cocoa Price Forecasting (GCP)</h2>
+  <h2 id="architecture" class="sr-only diagram-h2">Event-Driven Architecture for Cocoa Price Forecasting (GCP)</h2>
   <section id="architecture" class="full-bleed arch-wrap">
     <img
       src="/images/architectual_diagram.svg"
@@ -72,7 +70,7 @@ import "../../styles/cocoa-project.css"; // page-only styles
   </section>
 
   <!-- 3) Scope & Limitations -->
-  <section>
+  <section id="about">
     <h3 class="text-2xl font-semibold text-gray-900">Scope &amp; Limitations</h3>
     <ul class="mt-4 space-y-2 text-gray-800">
       <li><strong>My role:</strong> End-to-end (ingest &rarr; model &rarr; viz).</li>
