@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 :root {
-  --anchor-offset: 80px;
+  /* --anchor-offset: 80em; */
 }
 html {
-  scroll-padding-top: var(--anchor-offset);
+  /* scroll-padding-top: var(--anchor-offset); */
   scroll-behavior: smooth;
   margin-bottom: 0px;
   height: 100%;
@@ -14,7 +14,6 @@ body {
   margin: 0;
   padding: 0;
   width: 100vw;
-
 }
 .project-page main {
   width: 1400px;
@@ -80,7 +79,6 @@ body {
   text-align: center left;
   overflow-y: hidden;
 }
-
 
 /* END HEADER */
 .project-cocoa h1 {
@@ -149,19 +147,18 @@ h3 {
   z-index: 0;
 }
 
-
-
 /*#######################
   Architectual Diagram
   #######################*/
-  #dashboard-card, #architecture-card{
-    width: 1400px;
-    box-shadow: rgb(80, 80, 80) 1em 1em 3em -1em;
-    padding-bottom: 40px;
-    padding-top: 80px;
-    margin-top: 80px;
-    border-radius: 3em;
-  }
+#dashboard-card,
+#architecture-card {
+  width: 1400px;
+  box-shadow: rgb(80, 80, 80) 1em 1em 3em -1em;
+  padding-bottom: 40px;
+  padding-top: 80px;
+  margin-top: 80px;
+  border-radius: 3em;
+}
 
 .full-bleed {
   /* width: 100dvw;   */
@@ -219,7 +216,7 @@ h3 {
   font-weight: 500;
   font-size: 1rem;
   color: #fff;
-  background: #59473f;
+  background: #333333;
   border-radius: 999px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
   opacity: 0.92;

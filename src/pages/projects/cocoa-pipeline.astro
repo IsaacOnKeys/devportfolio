@@ -2,7 +2,6 @@
 import { siteConfig } from "../../config";
 
 import "../../styles/cocoa-project.css"; 
-
 ---
 
 <head>
@@ -19,41 +18,34 @@ import "../../styles/cocoa-project.css";
       btn.classList.toggle('show', !e.isIntersecting);
     }, {threshold: 0.01}).observe(hero);
   </script>
+
 </head>
 
 <body class="project-page">
 
-      <!-- NAvigation -->
-<section id="cocoa-pipeline" class="project-cocoa p-8 sm:p-12 md:p-16 lg:p-24">  
-  <nav id="navigation">
-    <ul id="nav-list">
-      <li><a href="#dashboard">Analytics</a></li>
-      <li><a href="#architecture">System Architecture</a></li>
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="/">Home</a></li>
-    </ul>
-  </nav>
+  <!-- Navigation -->
+  <section id="cocoa-pipeline" class="project-cocoa">
+    <nav id="navigation">
+      <ul id="nav-list">
+        <li><a href="#dashboard">Analytics</a></li>
+        <li><a href="#architecture">System Architecture</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
 
+    <!-- Header -->
+    <header id="hero" class="cocoa-h1-bg">
+      <h1>Swiss Cocoa Price Forecast</h1>
+      <h2 class="subtitle">Live, ML-driven analytics for market trends.</h2>
+    </header>
 
-       <!-- Header -->
-  <header id="hero" class="mb-8 cocoa-h1-bg">
-    
-      <h1>
-        Swiss Cocoa Price Forecast
-      </h1>    
-    
-    <h2 class="subtitle">Live, ML-driven analytics for market trends.</h2>
-  </header>
-
-
-  <main>
-    <!-- 1) Live Dashboard (Looker) -->
-    
-    <h2 id="dashboard">Live Dashboard</h2>
-    <section id="dashboard-card" class="w-[1200px] mx-auto">
-
+    <main>
+      <!-- 1) Live Dashboard (Looker) -->
+      <h2 id="dashboard">Live Dashboard</h2>
+      <section id="dashboard-card">
         <div class="dashboard">
-    <!-- Cocoa Dashboard — Page 1 -->
+          <!-- Cocoa Dashboard — Page 1 -->
           <iframe
             title="Cocoa Dashboard — Page 1"
             src="https://lookerstudio.google.com/embed/reporting/0458444b-cbb3-4adf-afad-6e9b2ebb93ff/page/BGEqE"
@@ -63,8 +55,9 @@ import "../../styles/cocoa-project.css";
             style="border:0; display:block; margin:0 auto;"
             allowfullscreen>
           </iframe>
-    <!-- Cocoa Dashboard — Page 2 -->
         </div>
+
+        <!-- Cocoa Dashboard — Page 2 -->
         <div class="dashboard">
           <iframe
             title="Cocoa Dashboard — Page 2"
@@ -76,91 +69,112 @@ import "../../styles/cocoa-project.css";
             allowfullscreen>
           </iframe>
         </div>
+      </section>
 
-    </section>
-
-
-  <!-- 2) Architecture Diagram (full-bleed) -->
-  <h2 id="architecture">Event-Driven Architecture for Cocoa Price Forecasting (GCP)</h2>
-  <section id="architecture-card">
-    <img
-      src="/images/architectual_diagram.svg"
-      alt="Architecture: sources &rarr; Cloud Functions &rarr; Pub/Sub (Avro, DLQs) &rarr; Beam &rarr; BigQuery (staging &rarr; curated/features) &rarr; BQML &rarr; Looker; VM boundary encloses Airflow (scheduler/webserver/Postgres) and Beam."
-      loading="lazy"
-      decoding="async"
-      class="arch-img"
-    />
-  </section>
+      <!-- 2) Architecture Diagram (full-bleed) -->
+      <h2 id="architecture">Event-Driven Architecture for Cocoa Price Forecasting (GCP)</h2>
+      <section id="architecture-card">
+        <img
+          src="/images/architectual_diagram.svg"
+          alt="Architecture: sources → Cloud Functions → Pub/Sub (Avro, DLQs) → Beam → BigQuery (staging → curated/features) → BQML → Looker; VM boundary encloses Airflow (scheduler/webserver/Postgres) and Beam."
+          loading="lazy"
+          decoding="async"
+          class="arch-img"
+        />
+      </section>
 
       <!-- 3) Overview -->
-  <section id="overview">
-      <!-- 3.0) Scope & Limitations -->
+      <section id="overview">
+        <!-- 3.0) Scope & Limitations -->
+        <section>
+          <h2>Overview &amp; Design Choices</h2>
+          <h3>Scope &amp; Limitations</h3>
+          <ul>
+            <li><strong>Goal:</strong> Track cocoa prices &amp; drivers for the cocoa market in Switzerland; forecast short-term moves for the next 40 days</li>
+            <li><strong>Impact:</strong> Forecast MAPE ≈8.7% over 40 days; alerts ready.</li>
+            <li><strong>My role:</strong> End-to-end (ingest → transform → model → viz).</li>
+            <li><strong>Freshness:</strong> Data updates daily by 12:00 CET/CEST.</li>
+            <li><strong>Historical volume:</strong> ≈12k rows across 3 feeds (2014-2024 snapshot).</li>
+            <li><strong>Incremental rate:</strong> 3 rows/day (1 per feed).</li>
+            <li><strong>Reliability:</strong> DL topics + retries; uptime 99%.</li>
+            <li><strong>Cost:</strong> ≈€30/mo (VM + BQ).</li>
+            <li><strong>Scope:</strong> Production-style architecture with a lean feature set.</li>
+            <li><strong>Accuracy:</strong> See the dashboard tile for current MAPE; expected to improve with added features/tuning.</li>
+            <li><strong>Not yet modeled:</strong> FX, supply/demand shocks, holiday/seasonal effects.</li>
+          </ul>
+        </section>
 
-    <section >
-      <h2 >Overview & Design Choices</h2>
-      <h3 class="text-2xl font-semibold text-gray-900">Scope &amp; Limitations</h3>
-      <ul class="mt-4 space-y-2 text-gray-800">
-        <li><strong>Goal:</strong> Track cocoa prices & drivers for the cocoa market in Switzerland; forecast short-term moves for the next 40 days</li>
-        <li><strong>Impact:</strong> Forecast MAPE ≈8.7% over 40 days; alerts ready.</li>
-        <li><strong>My role:</strong> End-to-end (ingest &rarr; transform &rarr; model &rarr; viz).</li>
-        <li><strong>Freshness:</strong> Data updates daily by 12:00 CET/CEST.</li>
-        <li><strong>Historical volume:</strong> ≈12k rows across 3 feeds (2014-2024 snapshot).</li>
-        <li><strong>Incremental rate:</strong> 3 rows/day (1 per feed).</li>
-        <li><strong>Reliability:</strong> DL topics + retries; uptime 99%.</li>
-        <li><strong>Cost:</strong> ≈€30/mo (VM + BQ).</li>
-        <li><strong>Scope:</strong> Production-style architecture with a lean feature set.</li>
-        <li><strong>Accuracy:</strong> See the dashboard tile for current MAPE; expected to improve with added features/tuning.</li>
-        <li><strong>Not yet modeled:</strong> FX, supply/demand shocks,  holiday/seasonal effects.</li>
-      </ul>
+        <!-- 3.1) Design rationale -->
+        <section>
+          <h3>Design Rationale</h3>
+          <ul>
+            <li><strong>Cost &amp; control:</strong> Self-managed Airflow VM over Composer; Self-managed BEAM streaming on VM over Dataflow; Budget alerts.</li>
+            <li><strong>Iteration speed:</strong> BigQuery ML for in-SQL training/evaluation.</li>
+            <li><strong>Contracts:</strong> Avro schemas enforced in Pub/Sub, during Beam (fastavro) decode, and on BigQuery writes; DLQs catch rejects.</li>
+            <li><strong>Data integrity:</strong> Validations at source ingest and in Beam (null handling, type/range checks); rejects to DLQs.</li>
+            <li><strong>Governance:</strong> Least-privilege IAM, secrets in Secret Manager, no public endpoints, region europe-west3 for all data/compute, scanned for exposed API keys with GitGuardian.</li>
+          </ul>
+        </section>
+
+        <!-- 3.2) Next -->
+        <section>
+          <h3>Next</h3>
+          <ul>
+            <li>CI/CD hardening.</li>
+            <li>Feature expansion (FX, calendar effects, supply signals).</li>
+            <li>Lightweight runbook and data catalog.</li>
+          </ul>
+        </section>
+
+        <!-- 3.3) Nice-to-haves -->
+        <section>
+          <h3>Nice-to-haves</h3>
+          <ul>
+            <li>“What changed today?” summary.</li>
+            <li>More up-to date sources with paid API subscriptions</li>
+            <li>One-click backfill with audit note.</li>
+            <li>Shareable links with preset filters.</li>
+          </ul>
+        </section>
+
+        <!-- 3.4) GitHub -->
+        <section>
+          <h3>Code Repository</h3>
+          <ul>
+            <li>
+              <a
+                href="https://github.com/IsaacOnKeys/Cocoa_Prices.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                style="position:relative;top:.15em;"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="2em"
+                  height="2em"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </section>
+
+    </main>
   </section>
 
-  <!-- 3.1) Design rationale -->
-  <section>
-    <h3 class="text-2xl font-semibold text-gray-900">Design Rationale</h3>
-    <ul class="mt-4 space-y-2 text-gray-800">
-      <li><strong>Cost &amp; control:</strong> Self-managed Airflow VM over Composer; Self-managed BEAM streaming on VM over Dataflow; Budget alerts.</li>
-      <li><strong>Iteration speed:</strong> BigQuery ML for in-SQL training/evaluation.</li>
-      <li><strong>Contracts:</strong> Avro schemas enforced in Pub/Sub, during Beam (fastavro) decode, and on BigQuery writes; DLQs catch rejects.</li>
-      <li><strong>Data integrity:</strong> Validations at source ingest and in Beam (null handling, type/range checks); rejects to DLQs.</li>
-      <li><strong>Governance:</strong> Least-privilege IAM, secrets in Secret Manager, no public endpoints, region europe-west3 for all data/compute, scanned for exposed API keys with GitGuardian.</li>
-    </ul>
-  </section>
-
-  <!-- 3.2) Next -->
-  <section>
-    <h3 class="text-2xl font-semibold text-gray-900">Next</h3>
-    <ul class="mt-4 list-disc pl-6 text-gray-800">
-      <li>CI/CD hardening.</li>
-      <li>Feature expansion (FX, calendar effects, supply signals).</li>
-      <li>Lightweight runbook and data catalog.</li>
-    </ul>
-  </section>
-
-  <!-- 3.3) Nice-to-haves -->
-  <section>
-    <h3 class="text-2xl font-semibold text-gray-900">Nice-to-haves</h3>
-    <ul class="mt-4 list-disc pl-6 text-gray-800">
-      <li>“What changed today?” summary.</li>
-      <li>More up-to date sources with paid API subscriptions</li>
-      <li>One-click backfill with audit note.</li>
-      <li>Shareable links with preset filters.</li>
-    </ul>
-  </section>
-  <!-- 3.4 Git Hub -->
-  <section>
-    <h3 class="text-2xl font-semibold text-gray-900">Code Repository</h3>
-    <ul class="mt-4 list-disc pl-6 text-gray-800">
-      <li> https://github.com/IsaacOnKeys/Cocoa_Prices.git</li>
-    </ul>
-
-  </section>
-</section>
-
-</section>
   <!-- Back to top -->
-  <p class="to-top" >
-    <a href="#cocoa-pipeline" ><span class="to-top-arrow">&uarr;</span> Back to top</a>
+  <p class="to-top">
+    <a href="#cocoa-pipeline"><span class="to-top-arrow">&uarr;</span> Back to top</a>
   </p>
   <!--  -->
-</main>
 </body>
