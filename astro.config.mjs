@@ -2,8 +2,9 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
-// https://astro.build/config
 export default defineConfig({
+  site: "https://isaaconkeys.github.io",
+  base: "/Cocoa_Prices/",
   vite: {
     plugins: [tailwindcss()],
   },
