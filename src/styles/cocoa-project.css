@@ -1,19 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
+:root {
+  --anchor-offset: 80px;
+}
 html {
+  scroll-padding-top: var(--anchor-offset);
   scroll-behavior: smooth;
+  margin-bottom: 0px;
+  height: 100%;
 }
 
-.project-page body {
+body {
   margin: 0;
   padding: 0;
   width: 100vw;
-  overflow-x: hidden;
+
 }
 .project-page main {
   width: 1400px;
-  margin: 40px auto;
+  margin: 0px auto;
   z-index: -1;
+  background-color: white;
 }
 
 .project-page #navigation {
@@ -64,6 +71,8 @@ html {
     "Segoe UI Symbol";
   line-height: 1.6;
 }
+
+/* HEADER */
 .project-cocoa header {
   width: 100vw;
   height: 100vh;
@@ -71,6 +80,9 @@ html {
   text-align: center left;
   overflow-y: hidden;
 }
+
+
+/* END HEADER */
 .project-cocoa h1 {
   height: 50vh;
   display: flex;
@@ -98,10 +110,11 @@ h3 {
   font-weight: 500;
   letter-spacing: 0.2px;
   max-width: 1200px;
-  margin: auto;
+  margin: 0px auto;
 }
 .project-cocoa h2 {
-  margin-top: 2em;
+  margin-top: 0em;
+  padding-top: 4em;
   margin-bottom: 1.5em;
 }
 .project-cocoa h3 {
@@ -123,12 +136,10 @@ h3 {
    Dashboards 
    ##########*/
 
-.space-y-12 {
-  margin-top: 40px;
-}
 .dashboard {
   background-color: transparent;
   width: 1200px;
+  height: 100%;
   margin: 0 auto;
   padding: 0;
   margin-bottom: 80px;
@@ -138,9 +149,19 @@ h3 {
   z-index: 0;
 }
 
+
+
 /*#######################
   Architectual Diagram
   #######################*/
+  #dashboard-card, #architecture-card{
+    width: 1400px;
+    box-shadow: rgb(80, 80, 80) 1em 1em 3em -1em;
+    padding-bottom: 40px;
+    padding-top: 80px;
+    margin-top: 80px;
+    border-radius: 3em;
+  }
 
 .full-bleed {
   /* width: 100dvw;   */
@@ -159,26 +180,65 @@ h3 {
   display: block;
   height: auto;
   margin: 0px auto;
-  width: 98%;
+  width: 1200px;
+}
+
+/* ################## 
+  OVerview
+  ####################*/
+#overview {
+  padding-bottom: 80px;
 }
 
 .to-top {
-  width: 100vw;
-  margin: 2em auto;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Segoe UI Emoji",
     "Segoe UI Symbol";
-  text-align: center;
-  font-size: 2em;
-  color: #222222;
 }
+.to-top.show {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* Make the link look like a pill button */
 .to-top a {
-  text-underline-offset: 0.5em;
-  text-decoration-line: none;
-  font-weight: 200;
+  pointer-events: auto; /* the link stays clickable */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.5em 0.9em;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #fff;
+  background: #59473f;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  opacity: 0.92;
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
+
+.to-top a:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
 .to-top-arrow {
-  font-size: 2.5em;
-  font-family: cursive;
-  font-weight: 200;
+  font-size: 1.2em;
+  line-height: 1;
+  font-family: ui-sans-serif, system-ui;
+}
+
+/* Keep your link color consistent when visited */
+.to-top a:link,
+.to-top a:visited {
+  color: #fff;
 }
