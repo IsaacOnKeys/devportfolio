@@ -5,7 +5,7 @@ export const siteConfig = {
   accentColor: "#4285F4cd ",
   social: {
     email: "isaachaire@protonmail.com",
-    linkedin: "www.linkedin.com/in/isaac-haire",
+    linkedin: "https://www.linkedin.com/in/isaac-haire",
     github: "https://github.com/IsaacOnKeys",
   },
   aboutMe:
@@ -29,7 +29,7 @@ export const siteConfig = {
       name: "Swiss Cocoa Prices Streaming & Forecasting (GCP)",
       description:
         "End-to-end data engineering pipeline on Google Cloud: live cocoa, oil, and weather data ingested daily via web scraping and API calls, published to Pub/Sub topics with Avro schemas through Cloud Functions; raw feeds cleaned, validated, and transformed extensively with Dataflow (Apache Beam) into BigQuery staging tables; orchestration and scheduling managed cost-efficiently on a self-hosted Airflow VM (Docker Compose, Secret Manager, IAM roles); feature engineering automated in BigQuery SQL stored procedures; predictive models trained and evaluated with BigQuery ML; forecasts and KPIs delivered through a Looker Studio dashboard; version-controlled with GitHub and monitored via Cloud Logging/Ops Agent.",
-      link: "/projects/cocoa-pipeline/",
+      link: "/devportfolio/projects/cocoa-pipeline/",
       skills: [
         "Python",
         "SQL",
@@ -47,7 +47,7 @@ export const siteConfig = {
         "Cloud Scheduler",
       ],
       dashboardUrl:
-      "https://lookerstudio.google.com/embed/reporting/0458444b-cbb3-4adf-afad-6e9b2ebb93ff/page/BGEqE",
+        "https://lookerstudio.google.com/embed/reporting/0458444b-cbb3-4adf-afad-6e9b2ebb93ff/page/BGEqE",
     },
   ],
   experience: [
