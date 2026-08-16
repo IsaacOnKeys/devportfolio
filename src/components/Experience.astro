@@ -23,10 +23,12 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
               {siteConfig.experience.map((exp, index) => (
                 <div class="relative mb-12 last:mb-0">
                   {/* Timeline dot at top of card */}
+                  {/*
                   <div
                     class="absolute left-1/2 -top-2 w-4 h-4 bg-white border-2 rounded-full -translate-x-1/2 z-20 transition-all duration-300"
                     style={`border-color: ${siteConfig.accentColor}; background-color: ${siteConfig.accentColor}`}
                   />
+                  */}
 
                   {/* Connecting line below card */}
                   {index < siteConfig.experience.length - 1 && (
