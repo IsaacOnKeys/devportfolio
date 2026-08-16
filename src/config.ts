@@ -69,6 +69,22 @@ export const siteConfig = {
   ],
   education: [
     {
+      school: "MIT OpenCourseWare",
+      degree: "Introduction to Computer Science and Programming",
+      dateRange: "Jan 2026",
+      achievements: [
+        "MIT-6.100L Introduction to Computer Science and Programming in Python",
+      ],
+    },
+        {
+      school: "MITx",
+      degree: "Probability - The Science of Uncertainty and Data",
+      dateRange: "Sep 2025",
+      achievements: [
+        "6.431x — Statistical modeling, estimation, hypothesis testing, confidence intervals, regression, and statistical inference",
+      ],
+    },
+    {
       school: "IBM",
       degree: "DevOps and Software Engineering — Professional Certificate",
       dateRange: "Dec 2024",
