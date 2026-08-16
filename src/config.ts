@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Isaac Haire",
-  title: "Data Engineer",
+  title: "Data Engineer | Software Engineer | BI & Analytics",
   description: "Portfolio website of Isaac Haire",
   accentColor: "#4285F4cd ",
   social: {
