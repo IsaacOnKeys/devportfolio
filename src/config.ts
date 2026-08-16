@@ -109,8 +109,8 @@ export const siteConfig = {
       ],
     },
     {
-      school: "Cornish College of the Arts 🎹",
-      degree: "Bachelor of Music",
+      school: "Cornish College of the Arts",
+      degree: "Bachelor of Music 🎹",
       dateRange: "May 2006",
       achievements: ["Piano Performance"],
     },
