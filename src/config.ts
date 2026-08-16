@@ -53,7 +53,7 @@ export const siteConfig = {
   experience: [
     {
       company: "GRAMMARGON",
-      website: "https://grammargon.de",
+      website: ["https://grammargon.de"],
       title: "Co-founder · Software Developer · Technical Operations",
       dateRange: "2017 - Present",
       bullets: [
