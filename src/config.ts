@@ -53,18 +53,17 @@ export const siteConfig = {
   experience: [
     {
       company: "GRAMMARGON",
-      website: ["https://grammargon.com", "https://grammargon.de"],
-      title: "Co-founder · Priniciple Developer",
+      website: "https://grammargon.de",
+      title: "Co-founder · Software Developer · Technical Operations",
       dateRange: "2017 - Present",
       bullets: [
-        "Built and maintained website/landing pages (SEO, schema, Core Web Vitals, e-commerce shop); deployed via FTP; managed hosting and SSL/TLS; caching & image optimization.",
-        "Owned Amazon Seller Central: ASIN setup, Brand Store",
-        "Managed FBA ops: inbound shipments, labeling/cartonization, restock limits, IPI and account health monitoring",
-        "Implemented pricing/keyword strategy; ran PPC campaigns and A/B tests tied to conversion KPIs",
-        "Produced print-ready cards/packaging in Adobe InDesign; used master pages/styles and dielines; added bleed/crop marks, managed CMYK color profiles; ran preflight; exported PDF/X; coordinated proofs and press checks.",
-        "Designed product visuals and dielines; coordinated vendor proofs and production timelines",
-        "Optimized product pages for search and conversion (titles, bullets, backend terms, images, video)",
-        "Led branding, UX, and asset production across web, Amazon Storefront, and marketing",
+        "Currently developing the GRAMMARGON mobile application in Unity and C#, including game logic, UI systems, data-driven card architecture, asset integration, responsive layouts, and Android device support.",
+        "Built and maintain the company’s customer-facing web presence and e-commerce infrastructure, including hosting, domain configuration, SSL/TLS, databases, caching, image optimization, and third-party service integrations.",
+        "Implemented technical SEO and performance improvements using structured data, metadata, Core Web Vitals analysis, page optimization, and search-performance monitoring.",
+        "Developed and maintain operational workflows connecting the website, online sales channels, reporting systems, product data, and internal content-management processes.",
+        "Manage live production systems, including deployments, updates, troubleshooting, integration maintenance, backups, and infrastructure changes.",
+        "Built and maintained technical components supporting Amazon and direct e-commerce operations, including product data, storefront configuration, inventory workflows, and reporting.",
+        "Created and maintained digital and production assets using structured Adobe InDesign workflows, reusable templates, preflight validation, color-management standards, and print-ready PDF output."
       ],
     },
   ],
