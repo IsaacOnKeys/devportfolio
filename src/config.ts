@@ -45,6 +45,7 @@ export const siteConfig = {
         "Looker Studio",
         "Docker",
         "Cloud Scheduler",
+        "Terraform"
       ],
       dashboardUrl:
         "https://lookerstudio.google.com/embed/reporting/0458444b-cbb3-4adf-afad-6e9b2ebb93ff/page/BGEqE",
