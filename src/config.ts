@@ -26,7 +26,7 @@ export const siteConfig = {
   ],
   projects: [
     {
-      name: "Swiss Cocoa Prices Streaming & Forecasting (GCP)",
+      name: "Data Streaming with GCP: Swiss Cocoa Price Forecasting",
       description:
         "End-to-end data engineering pipeline on Google Cloud: live cocoa, oil, and weather data ingested daily via web scraping and API calls, published to Pub/Sub topics with Avro schemas through Cloud Functions; raw feeds cleaned, validated, and transformed extensively with Dataflow (Apache Beam) into BigQuery staging tables; orchestration and scheduling managed cost-efficiently on a self-hosted Airflow VM (Docker Compose, Secret Manager, IAM roles); feature engineering automated in BigQuery SQL stored procedures; predictive models trained and evaluated with BigQuery ML; forecasts and KPIs delivered through a Looker Studio dashboard; version-controlled with GitHub and monitored via Cloud Logging/Ops Agent.",
       link: "/devportfolio/projects/cocoa-pipeline/",
