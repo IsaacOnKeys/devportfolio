@@ -180,6 +180,69 @@ h3 {
   width: 1200px;
 }
 
+.project-cocoa .terraform-graph {
+  box-sizing: border-box;
+  width: min(1200px, calc(100% - 2rem));
+  max-width: 100%;
+  margin: 1rem auto 0;
+  border-top: 1px solid #dddddd;
+  color: #555555;
+}
+
+.project-cocoa .terraform-graph summary {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.65rem 0.25rem 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.15s ease;
+}
+
+.project-cocoa .terraform-graph summary:hover {
+  color: #222222;
+}
+
+.project-cocoa .terraform-graph summary:focus-visible {
+  outline: 2px solid #777777;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.project-cocoa .terraform-graph-label {
+  font-weight: 500;
+}
+
+.project-cocoa .terraform-graph-action::before {
+  content: " · ";
+}
+
+.project-cocoa .terraform-graph-content {
+  min-width: 0;
+  padding-top: 1rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.project-cocoa .terraform-graph-content img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.project-cocoa .terraform-graph-content a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #555555;
+  font-size: 0.85rem;
+  text-underline-offset: 0.15em;
+}
+
+.project-cocoa .terraform-graph-content a:hover {
+  color: #222222;
+}
+
 /* ################## 
   OVerview
   ####################*/

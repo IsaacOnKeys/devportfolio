@@ -2,6 +2,8 @@
 import { siteConfig } from "../../config";
 
 import "../../styles/cocoa-project.css"; 
+
+const terraformGraphSrc = `${import.meta.env.BASE_URL}images/terraform-resource-graph.svg`;
 ---
 
 <head>
@@ -81,6 +83,25 @@ import "../../styles/cocoa-project.css";
           decoding="async"
           class="arch-img"
         />
+
+        <details class="terraform-graph">
+          <summary>
+            <span class="terraform-graph-label">Infrastructure as Code · Terraform</span>
+            <span class="terraform-graph-action">View resource graph</span>
+          </summary>
+
+          <div class="terraform-graph-content">
+            <img
+              src={terraformGraphSrc}
+              alt="Terraform resource graph for the Cocoa Price Forecasting GCP infrastructure"
+              loading="lazy"
+              decoding="async"
+            />
+            <a href={terraformGraphSrc} target="_blank" rel="noopener noreferrer">
+              Open full-size ↗
+            </a>
+          </div>
+        </details>
       </section>
 
       <!-- 3) Overview -->
