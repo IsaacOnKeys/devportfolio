@@ -184,22 +184,28 @@ h3 {
   box-sizing: border-box;
   width: min(1200px, calc(100% - 2rem));
   max-width: 100%;
-  margin: 1rem auto 0;
-  border-top: 1px solid #dddddd;
+  margin: 1.25rem auto 0;
   color: #555555;
 }
 
 .project-cocoa .terraform-graph summary {
   width: fit-content;
   margin: 0 auto;
-  padding: 0.65rem 0.25rem 0;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #333333;
+  border-radius: 0.5rem;
   cursor: pointer;
+  color: #ffffff;
+  background: #333333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
   font-size: 0.9rem;
-  transition: color 0.15s ease;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .project-cocoa .terraform-graph summary:hover {
-  color: #222222;
+  color: #ffffff;
+  background: #4a4a4a;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
 }
 
 .project-cocoa .terraform-graph summary:focus-visible {
@@ -209,11 +215,15 @@ h3 {
 }
 
 .project-cocoa .terraform-graph-label {
-  font-weight: 500;
+  color: #dddddd;
 }
 
 .project-cocoa .terraform-graph-action::before {
   content: " · ";
+}
+
+.project-cocoa .terraform-graph-action {
+  font-weight: 500;
 }
 
 .project-cocoa .terraform-graph-content {
